@@ -6,21 +6,86 @@
   <title>Pre-Order</title>
   <link rel="stylesheet" href="style.css">
 
-  
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-X7PF228XDR"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-X7PF228XDR');
   </script>
 </head>
 <body>
   <header>
-    <h1>Pre-Order Coming Soon!</h1>
-    <p>Thank you for your interest. Stay tuned for updates.</p>
+    <h1>Reserve Yours Today!</h1>
+    <p>Select your quantity and payment method below.</p>
   </header>
+
+  <main class="preorder-container">
+    <!-- Left side: Product info -->
+    <section class="product-info">
+      <img src="images/popcat.jpg" alt="Prototype Tracking Device" class="device-image">
+
+      <h2>Prototype Tracker</h2>
+
+      <div class="price-details">
+        <label for="quantity">Quantity:</label>
+        <input 
+          type="number" 
+          id="quantity" 
+          name="quantity" 
+          min="1" 
+          value="1"
+          onchange="updateTotal()"
+        >
+        <p id="total">Total: $14.99</p>
+      </div>
+    </section>
+
+    <!-- Right side: Payment options -->
+    <section class="payment-options">
+      <h2>Choose Your Payment Method</h2>
+
+      <div class="payment-buttons">
+        <!-- Apple Pay -->
+        <a href="error.html" class="pay-btn apple-pay">
+          <img src="images/Apple_Pay_logo.svg" alt="Apple Pay logo" class="pay-logo">
+        </a>
+
+        <!-- PayPal -->
+        <a href="error.html" class="pay-btn paypal">
+          <img src="images/PayPal-logo.png" alt="PayPal logo" class="pay-logo">
+        </a>
+
+        <!-- Venmo -->
+        <a href="error.html" class="pay-btn venmo">
+          <img src="images/Venmo-logo.png" alt="Venmo logo" class="pay-logo">
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const quantityInput = document.getElementById('quantity');
+    const totalDisplay = document.getElementById('total');
+    const PRICE_PER_ITEM = 14.99;
+
+    // Update total price and store quantity in localStorage
+    function updateTotal() {
+      const qty = parseInt(quantityInput.value) || 1;
+      const total = qty * PRICE_PER_ITEM;
+      totalDisplay.innerText = `Total: $${total.toFixed(2)}`;
+      localStorage.setItem('quantity', qty);
+    }
+
+    // On page load, restore quantity and recalculate total
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedQty = localStorage.getItem('quantity');
+      if (savedQty && !isNaN(savedQty)) {
+        quantityInput.value = savedQty;
+      }
+      updateTotal(); // ensure price reflects correct quantity
+    });
+  </script>
 </body>
 </html>

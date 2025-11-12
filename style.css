@@ -1,77 +1,155 @@
 /* style.css - Georgia Tech Colors */
 
-li {
-  margin-bottom: 1rem;  
-  line-height: 1.6;     
-}
-ul {
-  list-style-type: none; 
-  padding-left: 0;       
-  margin: 0 auto;        
-  text-align: center;      
-  max-width: 600px;      
-}
-
-body 
-{
+body {
   font-family: Arial, sans-serif;
   text-align: center;
   margin: 0;
   padding: 0;
-  background: #FFFFFF; /* white background */
-  color: #003057; /* Navy Blue text */
+  background: #FFFFFF;
+  color: #003057;
   line-height: 1.5;
 }
 
-header 
-{
+header {
   background: #B3A369; /* Tech Gold */
-  color: #FFFFFF; /* White text */
+  color: #FFFFFF;
   padding: 2rem 1rem;
   border-bottom-left-radius: 2rem;
   border-bottom-right-radius: 2rem;
 }
 
-h1 
-{
+h1 {
   font-size: clamp(1.5rem, 5vw, 2.5rem);
   margin: 0.75rem 0;
 }
 
-p 
-{
+p {
   font-size: clamp(1rem, 4vw, 1.2rem);
   margin-bottom: 2rem;
-  padding: 0 1rem;
 }
 
-button 
-{
-  background: #003057; /* Navy Blue */
-  color: #FFFFFF; /* White text */
-  border: none;
-  padding: 1rem 2rem;
-  font-size: clamp(1rem, 4vw, 1.2rem);
+/* Split layout container */
+.preorder-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  padding: 2rem 1rem;
+  gap: 2rem;
+}
+
+/* Left side: Product info */
+.product-info {
+  flex: 1 1 350px;
+  max-width: 500px;
+  background: #F6F6F6;
   border-radius: 1.5rem;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  width: 90%;
-  max-width: auto;
+  padding: 2rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 }
 
-button:hover
-{
-  background: #001E3D; /* Darker Navy for hover */
+.device-image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
 }
 
-@media (min-width: 768px) 
-{
-  header 
-  {
-    padding: 3rem 2rem;
+.price-details {
+  margin-top: 1.5rem;
+}
+
+.price-details label {
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.price-details input {
+  width: 70px;
+  padding: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.price-details p {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  color: #003057;
+}
+
+/* Right side: Payment section */
+.payment-options {
+  flex: 1 1 350px;
+  max-width: 500px;
+  background: #FFFFFF;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.payment-options h2 {
+  color: #003057;
+  margin-bottom: 1.5rem;
+}
+
+.payment-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+/* Buttons styling */
+.pay-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background: #FFF;
+  border-radius: 1.5rem;
+  width: 100%;
+  max-width: 260px;
+  height: 60px; /* consistent height for all buttons */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1.5px solid #000; /* black outline */
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}
+
+.pay-btn:hover {
+  background: #E6E6E6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Center logos perfectly and scale to fit */
+.pay-logo {
+  max-height: 70%;
+  max-width: 70%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .preorder-container {
+    flex-direction: column;
+    align-items: center;
   }
-  p
-  {
-    padding: 0 4rem;
+
+  .product-info,
+  .payment-options {
+    width: 90%;
+    max-width: 500px;
   }
 }
