@@ -38,7 +38,11 @@
           value="1"
           onchange="updateTotal()"
         >
-        <p id="total">Total: $14.99</p>
+        <p id="total">
+          Total: 
+          <span class="old-price" id="old-price">$14.99</span>
+          <span class="new-price" id="new-price">$4.99</span>
+        </p>
       </div>
     </section>
 
@@ -72,24 +76,31 @@
 
   <script>
     const quantityInput = document.getElementById('quantity');
-    const totalDisplay = document.getElementById('total');
-    const PRICE_PER_ITEM = 14.99;
+    const oldPriceDisplay = document.getElementById('old-price');
+    const newPriceDisplay = document.getElementById('new-price');
 
-    // Update total price and store quantity in localStorage
+    const OLD_PRICE_PER_ITEM = 14.99;
+    const NEW_PRICE_PER_ITEM = 4.99;
+
+    // Update total prices dynamically
     function updateTotal() {
       const qty = parseInt(quantityInput.value) || 1;
-      const total = qty * PRICE_PER_ITEM;
-      totalDisplay.innerText = `Total: $${total.toFixed(2)}`;
+      const oldTotal = qty * OLD_PRICE_PER_ITEM;
+      const newTotal = qty * NEW_PRICE_PER_ITEM;
+
+      oldPriceDisplay.innerText = `$${oldTotal.toFixed(2)}`;
+      newPriceDisplay.innerText = `$${newTotal.toFixed(2)}`;
+
       localStorage.setItem('quantity', qty);
     }
 
-    // On page load, restore quantity and recalculate total
+    // Restore quantity on reload
     window.addEventListener('DOMContentLoaded', () => {
       const savedQty = localStorage.getItem('quantity');
       if (savedQty && !isNaN(savedQty)) {
         quantityInput.value = savedQty;
       }
-      updateTotal(); // ensure price reflects correct quantity
+      updateTotal();
     });
   </script>
 </body>
