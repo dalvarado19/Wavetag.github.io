@@ -29,7 +29,7 @@ p {
 }
 
 #features {
-  text-align: left;
+  text-align: center;
   max-width: 600px;
   margin: 0 auto;
   padding: 0 1rem;
@@ -38,6 +38,12 @@ p {
 #features ul {
   list-style: none;
   padding: 0;
+  margin: 0;
+}
+
+#features li {
+  margin: 1rem 0;
+  line-height: 1.6;
 }
 
 /* Split layout container */
