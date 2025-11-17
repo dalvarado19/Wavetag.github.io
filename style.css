@@ -28,6 +28,10 @@ p {
   margin-bottom: 2rem;
 }
 
+#features {
+  text-align: left;
+}
+
 /* Split layout container */
 .preorder-container {
   display: flex;
