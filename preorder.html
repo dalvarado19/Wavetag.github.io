@@ -12,7 +12,8 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-X7PF228XDR');
+    gtag('config', 'G-BEQBDX9FGW');
+    gtag('event', 'pre-order_page_view');
   </script>
 </head>
 <body>
@@ -35,6 +36,7 @@
           id="quantity" 
           name="quantity" 
           min="1" 
+          inputmode="numeric"
           value="1"
           onchange="updateTotal()"
         >
@@ -52,22 +54,22 @@
 
       <div class="payment-buttons">
         <!-- Apple Pay -->
-        <a href="error.html" class="pay-btn apple-pay">
+        <a href="error.html" class="pay-btn apple-pay" onclick="gtag('event', 'apple_pay_click');">
           <img src="images/Apple_Pay_logo.svg" alt="Apple Pay logo" class="pay-logo">
         </a>
 
         <!-- Google Pay -->
-        <a href="error.html" class="pay-btn apple-pay">
+        <a href="error.html" class="pay-btn apple-pay" onclick="gtag('event', 'google_pay_click');">
           <img src="images/Google_Pay_Logo.svg" alt="Google Pay logo" class="pay-logo">
         </a>
 
         <!-- PayPal -->
-        <a href="error.html" class="pay-btn paypal">
+        <a href="error.html" class="pay-btn paypal" onclick="gtag('event', 'paypal_click');">
           <img src="images/PayPal_Logo.svg" alt="PayPal logo" class="pay-logo">
         </a>
 
         <!-- Venmo -->
-        <a href="error.html" class="pay-btn venmo">
+        <a href="error.html" class="pay-btn venmo" onclick="gtag('event', 'venmo_click');">
           <img src="images/Venmo-logo.png" alt="Venmo logo" class="pay-logo">
         </a>
       </div>
